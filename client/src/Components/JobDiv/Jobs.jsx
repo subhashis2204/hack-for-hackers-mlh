@@ -31,7 +31,7 @@ const Jobs = () => {
             <div
               key={id}
               className="group group/item singleJob w-[20rem]
-                  p-[20px] bg-white rounded [10px] hover:bg-blueColor shadow-lg shadow-greyIsh-400/700 hover:shadow-lg "
+                  p-[20px] bg-white rounded [10px] hover:bg-blueColor shadow-lg shadow-greyIsh-400/700 hover:shadow-lg flex flex-col"
             >
               <div className="flex flex-col gap-2 items-center justify-center">
                 <img src={avatar} alt="Company Logo" className="w-[30%]" />
@@ -62,6 +62,7 @@ const Jobs = () => {
                   })}
                 </div>
               </div>
+              <div className="grow"></div>
               {/*          
                      <button className='border-[2px] rounded-[10px] block p-[10px] w-full text-[14px]
                      font-semibold text-textColor hover:bg-white group-hover/item:text-textColor group-hover:text-white'>
