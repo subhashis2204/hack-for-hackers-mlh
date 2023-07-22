@@ -1,116 +1,66 @@
-import React from "react"
-import { BiTimeFive } from "react-icons/bi"
-
-import logo2 from "../../assets/logo-2.png"
-import logo3 from "../../assets/logo-3.png"
-import logo4 from "../../assets/logo-4.png"
+import React, { useEffect, useState } from "react"
+import axios from "axios"
 
 import { AiOutlineTwitter, AiFillGithub } from "react-icons/ai"
 import { BiLogoLinkedin } from "react-icons/bi"
-import { CiLocationOn } from "react-icons/ci"
-
-const Data = [
-  {
-    id: 1,
-    image: logo2,
-    title: "John Doe",
-    time: "Now",
-    location: "Canada",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    company: "Web",
-  },
-  {
-    id: 2,
-    image: logo3,
-    title: "Smith Clark",
-    time: "Now",
-    location: "India",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    company: "App",
-  },
-  {
-    id: 3,
-    image: logo4,
-    title: "Edmund James",
-    time: "Now",
-    location: "UK",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    company: "Web",
-  },
-  {
-    id: 4,
-    image: logo4,
-    title: "Edmund James",
-    time: "Now",
-    location: "UK",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    company: "Software",
-  },
-  {
-    id: 5,
-    image: logo4,
-    title: "Edmund James",
-    time: "Now",
-    location: "UK",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    company: "Backend",
-  },
-  {
-    id: 6,
-    image: logo4,
-    title: "Edmund James",
-    time: "Now",
-    location: "UK",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    company: "Ethical",
-  },
-]
+import SkillCard from "./SkillCard"
+import { FaMapMarkerAlt } from "react-icons/fa"
 
 const Jobs = () => {
+  const [profiles, setProfiles] = useState([])
+
+  useEffect(() => {
+    const getProfiles = async () => {
+      const response = await axios.get("http://localhost:3000/users")
+
+      console.log(response.data.users)
+      setProfiles(response.data.users)
+    }
+
+    getProfiles()
+  }, [])
+
   return (
     <div>
       <div
-        className="jobContainer flex gap-10 justify-center flex-wrap items-center
+        className="jobContainer flex gap-10 justify-center flex-wrap items-stretch
       py-10"
       >
-        {Data.map(({ id, image, title, time, location, desc, company }) => {
+        {profiles.map(({ id, avatar, name, location, bio, skills }) => {
           return (
             <div
               key={id}
-              className="group group/item singleJob w-[250px]
+              className="group group/item singleJob w-[20rem]
                   p-[20px] bg-white rounded [10px] hover:bg-blueColor shadow-lg shadow-greyIsh-400/700 hover:shadow-lg "
             >
-              <img src={image} alt="Company Logo" className="w-[30%]" />
-              <span className="flex justify-between items-center gap-4">
-                <h1
-                  className="text-[16px] font-semibold text-textColor
+              <div className="flex flex-col gap-2 items-center justify-center">
+                <img src={avatar} alt="Company Logo" className="w-[30%]" />
+                <span className="flex justify-between items-center gap-4">
+                  <h1
+                    className="text-[16px] font-semibold text-textColor
                         group-hover:text-white"
-                >
-                  {title}
-                </h1>
-                <span className="flex items-center text-[#ccc] gap-1">
-                  <BiTimeFive />
-                  {time}
+                  >
+                    {name}
+                  </h1>
                 </span>
-              </span>
-              <h6 className="text-[#ccc]">{location}</h6>
+                <div className="flex gap-2 items-center justify-center">
+                  <FaMapMarkerAlt className="group-hover:text-white" />
+                  <h6 className="text-[#ccc]">{location}</h6>
+                </div>
+              </div>
               <p
-                className="text-[13px] text-[#959595] pt-[20px] border-t-[2px] mt-[20px]
+                className="h-[100px] text-[13px] text-[#959595] pt-[20px] border-t-[2px] mt-[20px]
                      group-hover:text-white"
               >
-                {desc}
+                {bio}
               </p>
               <div className="company flex items-center gap-2">
-                {/* <img src={image} alt="Company Logo" className='w-[15%]' /> */}
-                <span className="text-[10px] py-[1rem] block group-hover:text-white">
-                  {company}
-                </span>
-                <span className="text-[10px] py-[1rem] block group-hover:text-white">
-                  {company}
-                </span>
-                <span className="text-[10px] py-[1rem] block group-hover:text-white">
-                  {company}
-                </span>
+                {/* <img src={avatar} alt="Company Logo" className='w-[15%]' /> */}
+                <div className="flex gap-2 mt-4 flex-wrap">
+                  {skills.map((skill) => {
+                    return <SkillCard>{skill}</SkillCard>
+                  })}
+                </div>
               </div>
               {/*          
                      <button className='border-[2px] rounded-[10px] block p-[10px] w-full text-[14px]
