@@ -6,8 +6,11 @@ import { BiLogoLinkedin } from "react-icons/bi"
 import SkillCard from "./SkillCard"
 import { FaMapMarkerAlt } from "react-icons/fa"
 
+import { useContext } from "react"
+import ProfileContext from "../../context/Pofiles"
+
 const Jobs = () => {
-  const [profiles, setProfiles] = useState([])
+  const { profiles, setProfiles } = useContext(ProfileContext)
 
   useEffect(() => {
     const getProfiles = async () => {
