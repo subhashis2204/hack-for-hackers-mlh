@@ -10,6 +10,7 @@ import MemePage from "./Components/MemePage"
 import { Route, Routes } from "react-router-dom"
 import Form from "./Components/Form"
 import { Card } from "./Components/Card"
+import Menu from "./Components/Menu"
 
 const App = () => {
   return (
@@ -21,12 +22,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<Form />} />
           <Route path="/forum" element={<ForumPage />} />
-          {/* <Route path="/blogs" element={<Card
-          imgSrc="https://picsum.photos/id/201/300/200"
-          imgAlt="Card Image 1"
-          title="Card Title"
-          description="This is the card description section. You can add more details about the product here"
-        />} /> */}
+          <Route path="/blogs" element={<Menu />} />
           <Route path="/memes" element={<MemePage />} />
           <Route
             path="/blogs"
