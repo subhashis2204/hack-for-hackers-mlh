@@ -8,6 +8,7 @@ import HomePage from "./Components/HomePage"
 import ForumPage from "./Components/ForumPage"
 import { Route, Routes } from "react-router-dom"
 import Form from "./Components/Form"
+import { Card } from "./Components/Card"
 
 const App = () => {
   return (
@@ -19,8 +20,18 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<Form />} />
           <Route path="/forum" element={<ForumPage />} />
-          <Route path="/blogs" element={<ForumPage />} />
-          <Route path="/memes" element={<ForumPage />} />
+          <Route path="/blogs" element={<Card
+          imgSrc="https://picsum.photos/id/201/300/200"
+          imgAlt="Card Image 1"
+          title="Card Title"
+          description="This is the card description section. You can add more details about the product here"
+        />} />
+          <Route path="/memes" element={<Card
+          imgSrc="https://picsum.photos/id/201/300/200"
+          imgAlt="Card Image 1"
+          title="Card Title"
+          description="This is the card description section. You can add more details about the product here"
+        />} />
         </Routes>
 
         <Footer />
