@@ -32,6 +32,16 @@ const io = new Server(server, {
   },
 })
 
+io.on("connection", (socket) => {
+  console.log("user connected")
+
+  socket.on("send_message", (data) => {
+    console.log(data)
+
+    socket.broadcast.emit("receive_message", data)
+  })
+})
+
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -48,8 +58,6 @@ app.get("/users", async (req, res) => {
 })
 
 app.post("/users/new", async (req, res) => {
-  //   await User.deleteMany({})
-
   const user = new User(req.body)
 
   await user.save()
@@ -59,30 +67,6 @@ app.post("/users/new", async (req, res) => {
 app.use("/users/search", async (req, res) => {
   const { query } = req.query
   const profiles = await User.find({ $text: { $search: query } })
-
-  // const profiles = await User.find({
-  //   $text: {
-  //     $search: {
-  //       wildcard: {
-  //         query: `*${query}*`,
-  //         path: { wildcard: "*" },
-  //         allowAnalyzedField: true,
-  //       },
-  //     },
-  //   },
-  // })
-  // const profiles = await User.find({
-  //   $text: {
-  //     $search: {
-  //       regex: {
-  //         query: `${query}*`,
-  //         path: ["name", "location", "bio", "skills"],
-  //         // allowAnalyzedField: true,
-  //       },
-  //     },
-  //   },
-  // })
-
   console.log(profiles)
 
   const response = { users: profiles }

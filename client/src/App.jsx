@@ -5,6 +5,7 @@ import Jobs from "./Components/JobDiv/Jobs"
 import Value from "./Components/ValueDiv/Value"
 import Footer from "./Components/FooterDiv/Footer"
 import HomePage from "./Components/HomePage"
+import ForumPage from "./Components/ForumPage"
 import { Route, Routes } from "react-router-dom"
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
 
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/forum" element={<ForumPage />} />
         </Routes>
 
         <Footer />
