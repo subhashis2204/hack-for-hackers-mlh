@@ -1,12 +1,12 @@
 export const variants = [
   //red
   {
-    id:1,
+    id: 1,
     mainColor: "#FDEDED",
     secondaryColor: "#F16360",
     symbol: "error",
-    title: "Error",
-    text: "Your search criteria did not match, please try again.",
+    title: "Error ",
+    text: " Your search criteria did not match, please try again.",
   },
 
   // {
@@ -40,4 +40,4 @@ export const variants = [
   //   title: "Check it out",
   //   text: "Fun and cute pictures of dogs are to be released daily from now on!",
   // },
-];
+]

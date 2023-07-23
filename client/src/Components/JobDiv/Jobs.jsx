@@ -8,6 +8,8 @@ import { FaMapMarkerAlt } from "react-icons/fa"
 
 import { useContext } from "react"
 import ProfileContext from "../../context/Pofiles"
+import { Alert } from "../Alert"
+import { variants } from "../../variants"
 
 const Jobs = () => {
   const { profiles, setProfiles, findAllProfiles } = useContext(ProfileContext)
@@ -16,12 +18,23 @@ const Jobs = () => {
     findAllProfiles()
   }, [])
 
+  const content = profiles.length === 0 && (
+    <>
+      <div className="">
+        {variants.map((variant) => (
+          <Alert variant={variant} />
+        ))}
+      </div>
+    </>
+  )
+
   return (
     <div>
       <div
         className="jobContainer flex gap-10 justify-center flex-wrap items-stretch
       py-10"
       >
+        {content}
         {profiles.map(({ id, avatar, name, location, bio, skills, social }) => {
           return (
             <div
