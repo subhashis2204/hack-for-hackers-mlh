@@ -5,6 +5,12 @@
 
 devConnect is an open-source project that aims to create a platform for developers to showcase their skills and connect with potential collaborators, all in a user-friendly and searchable format. Whether you're a project manager, recruiter, or simply looking to collaborate with skilled developers, devConnect has got you covered.
 
+![screencapture-127-0-0-1-5173-2023-07-23-16_29_12](https://github.com/subhashis2204/hack-for-hackers-mlh/assets/100105826/412d6547-0ef7-4f10-8361-c85dcd8b127e)
+![Screenshot 2023-07-23 162840](https://github.com/subhashis2204/hack-for-hackers-mlh/assets/100105826/eaeb71e5-0c6e-4b78-9370-838d79912367)
+![Screenshot 2023-07-23 163035](https://github.com/subhashis2204/hack-for-hackers-mlh/assets/100105826/b63a5c45-4672-49a7-ad7b-bba84e2cd9e0)
+
+
+
 ## Features 💪
 
 🔍 **Powerful Search Functionality:** Find developers based on specific skills, locations, or name with ease. Connect with experts in a particular technology or programming language.
