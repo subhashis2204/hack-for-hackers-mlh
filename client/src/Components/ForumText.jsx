@@ -1,14 +1,17 @@
-function ForumText({ message }) {
+import user from "../assets/sender.svg"
+
+function UserText({ content }) {
   return (
     <>
-      <div className="font-poppins flex gap-4">
-        {/* <img src={bot} alt="" className="min-w-[3rem]" /> */}
-        <div className="bg-gray-500 bg-opacity-25 p-4 rounded-md flex flex-col items-center">
-          {message}
+      <div className="text-white font-poppins flex gap-4">
+        <div className="grow"></div>
+        <div className="bg-blue-600 p-4 rounded-md flex items-center">
+          {content}
         </div>
+        <img src={user} alt="" className="min-w-[3rem]" />
       </div>
     </>
   )
 }
 
-export default ForumText
+export default UserText

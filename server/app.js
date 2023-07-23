@@ -34,6 +34,10 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
   console.log("user connected")
+  socket.emit("connection", {
+    role: "server",
+    message: "welcome to the DevConnect Forum",
+  })
 
   socket.on("send_message", (data) => {
     console.log(data)

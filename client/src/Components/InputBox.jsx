@@ -15,7 +15,7 @@ function InputBox({ handleSendMessage }) {
       <div className="sticky bottom-0 w-full my-2 px-2 outline-2">
         <input
           type="text"
-          className="w-full py-2 px-3 rounded-md text-black font-poppins tracking-wide focus:outline-none"
+          className="w-full py-2 px-3 rounded-md text-black font-poppins tracking-wide focus:outline-none border-2 border-slate-400"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
