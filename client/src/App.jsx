@@ -13,12 +13,14 @@ const App = () => {
   return (
     <div>
       <div className="w-[85%] m-auto bg-white">
-        
         <NavBar />
-        <Form />
+
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/register" element={<Form />} />
           <Route path="/forum" element={<ForumPage />} />
+          <Route path="/blogs" element={<ForumPage />} />
+          <Route path="/memes" element={<ForumPage />} />
         </Routes>
 
         <Footer />

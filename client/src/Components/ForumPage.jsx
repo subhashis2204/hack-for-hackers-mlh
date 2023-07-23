@@ -10,15 +10,12 @@ function ForumPage() {
   useEffect(() => {
     socket.on("receive_message", (data) => {
       setChats((previousChats) => [...previousChats, data.message])
-      console.log(data.message)
     })
   }, [socket])
 
   const handleSendMessage = (message) => {
-    console.log(chats)
     socket.emit("send_message", { message: message })
     setChats((previousChats) => [...previousChats, message])
-    console.log(chats)
   }
 
   const renderedChats = chats.map((chat, index) => {

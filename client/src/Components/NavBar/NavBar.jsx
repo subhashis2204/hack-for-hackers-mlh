@@ -11,11 +11,14 @@ const NavBar = () => {
       </div>
 
       <div className="menu flex gap-8">
+        <Link to="/" className="menuList text-[#6f6f6f] hover:text-blueColor">
+          Home
+        </Link>
         <Link
           to="/blogs"
           className="menuList text-[#6f6f6f] hover:text-blueColor"
         >
-          Blog
+          Blogs
         </Link>
         <Link
           to="/forum"
