@@ -10,17 +10,10 @@ import { useContext } from "react"
 import ProfileContext from "../../context/Pofiles"
 
 const Jobs = () => {
-  const { profiles, setProfiles } = useContext(ProfileContext)
+  const { profiles, setProfiles, findAllProfiles } = useContext(ProfileContext)
 
   useEffect(() => {
-    const getProfiles = async () => {
-      const response = await axios.get("http://localhost:3000/users")
-
-      console.log(response.data.users)
-      setProfiles(response.data.users)
-    }
-
-    getProfiles()
+    findAllProfiles()
   }, [])
 
   return (
@@ -29,7 +22,7 @@ const Jobs = () => {
         className="jobContainer flex gap-10 justify-center flex-wrap items-stretch
       py-10"
       >
-        {profiles.map(({ id, avatar, name, location, bio, skills }) => {
+        {profiles.map(({ id, avatar, name, location, bio, skills, social }) => {
           return (
             <div
               key={id}
@@ -58,7 +51,6 @@ const Jobs = () => {
                 {bio}
               </p>
               <div className="company flex items-center gap-2">
-                {/* <img src={avatar} alt="Company Logo" className='w-[15%]' /> */}
                 <div className="flex gap-2 mt-4 flex-wrap">
                   {skills.map((skill) => {
                     return <SkillCard>{skill}</SkillCard>
@@ -66,16 +58,18 @@ const Jobs = () => {
                 </div>
               </div>
               <div className="grow"></div>
-              {/*          
-                     <button className='border-[2px] rounded-[10px] block p-[10px] w-full text-[14px]
-                     font-semibold text-textColor hover:bg-white group-hover/item:text-textColor group-hover:text-white'>
-                        Contact Now
-                     </button> */}
+
               <div className="icons flex gap-4 py-[1rem]">
-                <a href="http://"><BiLogoLinkedin className="bg-white p-[8px] h-[40px] w-[40px] rounded-full icon text-blueColor" /></a>
-                <a href="http://"> <AiFillGithub className="bg-white p-[8px] h-[40px] w-[40px] rounded-full icon text-blueColor" /></a>
-                <a href="http://"><AiOutlineTwitter className="bg-white p-[8px] h-[40px] w-[40px] rounded-full icon text-blueColor" /></a>
-                
+                <a href={social.LinkedIn} target="_blank">
+                  <BiLogoLinkedin className="bg-white p-[8px] h-[40px] w-[40px] rounded-full icon text-blueColor" />
+                </a>
+                <a href={social.GitHub} target="_blank">
+                  {" "}
+                  <AiFillGithub className="bg-white p-[8px] h-[40px] w-[40px] rounded-full icon text-blueColor" />
+                </a>
+                <a href={social.Twitter} target="_blank">
+                  <AiOutlineTwitter className="bg-white p-[8px] h-[40px] w-[40px] rounded-full icon text-blueColor" />
+                </a>
               </div>
             </div>
           )

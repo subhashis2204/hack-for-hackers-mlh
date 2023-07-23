@@ -60,6 +60,31 @@ app.use("/users/search", async (req, res) => {
   const { query } = req.query
   const profiles = await User.find({ $text: { $search: query } })
 
+  // const profiles = await User.find({
+  //   $text: {
+  //     $search: {
+  //       wildcard: {
+  //         query: `*${query}*`,
+  //         path: { wildcard: "*" },
+  //         allowAnalyzedField: true,
+  //       },
+  //     },
+  //   },
+  // })
+  // const profiles = await User.find({
+  //   $text: {
+  //     $search: {
+  //       regex: {
+  //         query: `${query}*`,
+  //         path: ["name", "location", "bio", "skills"],
+  //         // allowAnalyzedField: true,
+  //       },
+  //     },
+  //   },
+  // })
+
+  console.log(profiles)
+
   const response = { users: profiles }
   res.status(200).send({ message: response })
 })
